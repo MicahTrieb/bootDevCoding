@@ -1,4 +1,4 @@
-#Lesson link: https://www.boot.dev/lessons/ce043580-186d-4ab1-a045-672fd56ac152
+#Lesson Link: https://www.boot.dev/lessons/ce043580-186d-4ab1-a045-672fd56ac152
 
 def binary_search(target, arr):
     if arr:
