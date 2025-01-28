@@ -11,29 +11,24 @@ def merge_sort(nums):
 
 
 def merge(first, second):
-    print(f"First: {first} \nSecond: {second}")
     returnList = []
-    i = 0
-    j = 0
     if first and second:
-        while i < len(first) and j < len(second):
-            print(f"First list at index: {i} is {first[i]}\n")
-            print(f"Second list at index: {j} is {second[j]}")
-            if first[i] <= second[j]:
-                returnList.append(first[i])
-                i += 1
-            else:
-                returnList.append(second[j])
-                j += 1
-            if i == len(first) or j == len(second):
-                if len(first) > len(second):
-        if len(first) > len(second):
-            returnList.append(first[:i])
-        elif len(second) > len(first):
-            returnList.append(second[:j])
+        while first and second:
+            if first[0] >= second[0]:
+                returnList.append(second.pop(0))
+            elif second[0] > first[0]:
+                returnList.append(first.pop(0))
+        if first:
+            returnList.extend(first)
+        elif second:
+            returnList.extend(second)
+                  
     elif first:
-        returnList.append(first)
+        return first
     elif second:
-        returnList.append(second)
+        return second
+    else:
+        return None
     return returnList
+
     
