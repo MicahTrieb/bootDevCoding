@@ -1,14 +1,20 @@
 def quick_sort(nums, low, high):
-    returnList = []
     if low < high:
-        medianValue = len(nums) // 2
         currentPart = partition(nums, low, high)
-        quick_sort(nums[:medianValue], low, medianValue - 1)
-        quick_sort(nums[medianValue:], medianValue, high)
+        quick_sort(nums, low, currentPart - 1)
+        quick_sort(nums, currentPart, high)
+
 def partition(nums, low, high):
-    pass
-
-
-
-quickSortList = [2, 1, 3]
-quick_sort(quickSortList,0, len(quick_sort) - 1)
+    pivot = nums[high]
+    i = low
+    for currentIndex in range(low, high):
+        if nums[currentIndex] < pivot:
+            swapOne, swapTwo = nums[i], nums[currentIndex]
+            nums[i] = swapTwo
+            nums[currentIndex] = swapOne
+            i += 1
+    swapOne, swapTwo = nums[i], nums[high]
+    nums[i] = swapTwo
+    nums[high] = swapOne
+    return i
+    
