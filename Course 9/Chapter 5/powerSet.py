@@ -2,8 +2,15 @@
 
 def power_set(input_set):
     if not input_set:
-        return []
+        return [[]]
     returnList = []
-    currentVariable = input_set[0]
-    weirdShenanigans = [currentVariable]
-    returnList.append(powerSet(inputSet[0:])
+    firstIndex = input_set[0]
+    powerSet = power_set(input_set[1:])
+
+    for currentSubset in powerSet:
+        newSubSet = [firstIndex] + currentSubset
+        returnList.append(newSubSet)
+        returnList.append(currentSubset)
+
+    return returnList
+        
