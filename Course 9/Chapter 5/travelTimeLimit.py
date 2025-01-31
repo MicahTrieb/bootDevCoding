@@ -9,11 +9,11 @@ def num_countries_in_days(max_days, factor):
         return 1
         
 
-    while time_left > 0:
-        if time_in_country > time_left:
-            break
+    while time_in_country < max_days:
         count += 1
-        time_in_country += 1
         time_in_country = time_in_country * factor
+        time_in_country += 1
+        
     return count
+
 
