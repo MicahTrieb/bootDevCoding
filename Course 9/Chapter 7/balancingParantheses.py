@@ -2,10 +2,14 @@
 
 from stack import Stack
 
+from stack import Stack
+
+
 def is_balanced(input_str):
     leftCount = 0
     rightCount = 0
     stackClass = Stack()
+    poppedCheckDict = {}
     if input_str:
         if len(input_str) == 1:
             return False
@@ -14,11 +18,28 @@ def is_balanced(input_str):
         while stackClass.items:
             currentPop = stackClass.items.pop(-1)
             if currentPop == ")":
-                for currentIndex in range(stackClass.size() - 1, -1, -1):
-                    pass
-        
+                poppedCheckDict[stackClass.size()] = ")"
+                rightCount += 1
+            elif currentPop == "(":
+                poppedCheckDict[stackClass.size()] = "("
+                leftCount += 1
+        if leftCount != rightCount:
+            return False
+        sortedDict = dict(sorted(poppedCheckDict.items()))
+        for currentKey in sortedDict.items():
+            print(sortedDict)
+            if currentKey[1] == "(":
+                leftCount -= 1
+            elif currentKey[1] == ")" and rightCount >= leftCount:
+                rightCount -= 1
+                if rightCount < leftCount:
+                    return False
+            else:
+                return False
+        return True
     else:
         return False
+
 
 
 
