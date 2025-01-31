@@ -4,12 +4,15 @@ from stack import Stack
 
 
 class DebounceStack(Stack):
-
-    
+    def __init__(self):
+        self.items = []
     def push(self, item):
-        currentStacked = Stack.peek(self)
+        currentStacked = None
+        if Stack.size(self) >= 1:
+            currentStacked = Stack.peek(self)
         if item == currentStacked:
             pass
         else:
-            self.push(item)
-        
+            self.items.append(item)
+        return None
+
