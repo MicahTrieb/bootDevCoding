@@ -6,6 +6,7 @@ class Queue:
         self.items = []
 
     def push(self, item):
+        print(f"Item: {item}")
         if self.items:
             self.items.insert(0, item)
         else:
@@ -22,4 +23,5 @@ class Queue:
     def size(self):
         if self.items:
             return len(self.items)
-
+        else:
+            return 0
