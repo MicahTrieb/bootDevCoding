@@ -6,11 +6,11 @@ class BSTNode:
             return None
         if val > self.val:
             if self.right:
-                BSTNode.delete(self.right, val)
+                self.right = BSTNode.delete(self.right, val)
                 return self
         if val < self.val:
             if self.left:
-                BSTNode.delete(self.left, val)
+                self.left = BSTNode.delete(self.left, val)
                 return self
         if self.val == val:
             if self.right and not self.left:
@@ -18,19 +18,44 @@ class BSTNode:
             elif self.left and not self.right:
                 return self.left
             elif self.left and self.right:
-                if self.right.left:
-                    minNode = BSTNode.min_larger_node(self.right.left, val)
-                    self.val = minNode.val
-                    self.right = BSTNode.delete(self, val)
-                elif not self.right.left:
-                    self.val = self.right.val
-                    
-                    
-            return self
+                minNode = self.right.min_larger_node()
+                self.val = minNode.val
+                self.right = self.right.right
+        return self
+                
 
     def min_larger_node(self, val):
         if self.left and self.left.val > val:
-            min_larger_node(self, val)
+            return min_larger_node(self.left, val)
+        elif not self.left:
+            return self
         return self
         
+    # don't touch below this line
+
+    def __init__(self, val=None):
+        self.left = None
+        self.right = None
+        self.val = val
+
+    def insert(self, val):
+        if not self.val:
+            self.val = val
+            return
+
+        if self.val == val:
+            return
+
+        if val < self.val:
+            if self.left:
+                self.left.insert(val)
+                return
+            self.left = BSTNode(val)
+            return
+
+        if self.right:
+            self.right.insert(val)
+            return
+        self.right = BSTNode(val)
+
             
