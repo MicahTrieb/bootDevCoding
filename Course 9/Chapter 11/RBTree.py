@@ -22,6 +22,7 @@ class RBTree:
         newNode.left = RBNode(None)
         newNode.right = RBNode(None)
         newNode.red = True
+        newNode.parent = None
         currentVal = self.root
         while currentVal != self.nil:
             newNode.parent = currentVal
