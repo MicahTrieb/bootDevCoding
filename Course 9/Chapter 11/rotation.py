@@ -1,3 +1,5 @@
+#Lesson Link: https://www.boot.dev/lessons/10a39842-5bd3-40e9-946c-d066e2b206d5
+
 class RBNode:
     def __init__(self, val):
         self.red = False
@@ -22,11 +24,11 @@ class RBTree:
         pivot_parent.right = currentPivot.left
         if currentPivot.left != self.nil:
             currentPivot.left.parent = pivot_parent
-        pivot_parent.right.parent = pivot_parent.parent
+        currentPivot.parent = pivot_parent.parent
         if pivot_parent == self.root:
-            self.root = pivot_parent.right
+            self.root = currentPivot
         elif pivot_parent == pivot_parent.parent.left:
-            pivot_parent.parent.left = pivot_parent.left
+            pivot_parent.parent.left = currentPivot
         elif pivot_parent == pivot_parent.parent.right:
             pivot_parent.parent.right = currentPivot
         currentPivot.left = pivot_parent
@@ -44,10 +46,10 @@ class RBTree:
         if pivot_parent == self.root:
             self.root = currentPivot
         elif pivot_parent == pivot_parent.parent.left:
-            pivot_parent.left = currentPivot
+            pivot_parent.parent.left = currentPivot
         elif pivot_parent == pivot_parent.parent.right:
-            pivot_parent.right = currentPivot
-        currentPivot.left = pivot_parent
+            pivot_parent.parent.right = currentPivot
+        currentPivot.right = pivot_parent
         pivot_parent.parent = currentPivot
         
 
