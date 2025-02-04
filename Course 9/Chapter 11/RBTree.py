@@ -26,7 +26,6 @@ class RBTree:
         parent = newNode.parent
         currentVal = self.root
         while currentVal != self.nil:
-            print("In")
             parent = currentVal
             if newNode.val < currentVal.val:
                 currentVal = currentVal.left
@@ -36,11 +35,11 @@ class RBTree:
                 return currentVal
         newNode.parent = parent
         if newNode.parent == None:
-            print("In2")
             self.root = newNode
         else:
-            print("In3")
             if newNode.val > newNode.parent.val:
-                newNode.parent.left = newNode
-            else:
                 newNode.parent.right = newNode
+            elif newNode.val < newNode.parent.val:
+                newNode.parent.left = newNode
+            elif newNode.val == newNode.parent.val:
+                raise Exception("Unknown error")
