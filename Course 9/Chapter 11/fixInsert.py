@@ -1,3 +1,5 @@
+#Lesson Link: https://www.boot.dev/lessons/4cf09294-6f46-4dae-9e71-ed9d50b77b8c
+
 class RBNode:
     def __init__(self, val):
         self.red = False
@@ -64,7 +66,7 @@ class RBTree:
                         newNodeGParent.red = True
                         self.rotate_left(newNodeGParent)
                 elif newNodeGParent.left == newNodeParent:
-                    newNodeUncle = newNodeGParent.left
+                    newNodeUncle = newNodeGParent.right
                     if newNodeUncle.red == True:
                         newNodeUncle.red = False
                         newNodeParent.red = False
