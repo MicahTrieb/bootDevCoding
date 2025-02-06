@@ -1,5 +1,3 @@
-#Lesson Link: https://www.boot.dev/lessons/4cf09294-6f46-4dae-9e71-ed9d50b77b8c
-
 class RBNode:
     def __init__(self, val):
         self.red = False
@@ -47,25 +45,41 @@ class RBTree:
         self.fix_insert(new_node)
 
     def fix_insert(self, new_node):
-        while new_node != self.root and new_node.parent.red == True:
-            if new_node.parent:
-                newNodeParent = new_node.parent
+        newNodeParent = new_node.parent
+        while new_node is not self.root and newNodeParent.red == True:
             if newNodeParent.parent:
-                newNodeGparent = newNodeParent.parent
-            if newNodeParent == newNodeGparent.left:
-                newNodeUncle = newNodeGparent.right
-            if newNodeUncle.red == True:
-                newNodeParent.red = False
-                newNodeUncle.red = False
-                newNodeGparent.red = True
-                newNode = newNodeGparent
-            elif newNodeUncle.red == False:
-                if newNodeParent.left == new_node:
-                    new_node = newNodeParent
-                    self.rotate_right(new_node)
-                newNodeParent.red = False
-                newNodeGparent.red = True
-                self.rotate_left(newNodeGparent)
+                newNodeGParent = newNodeParent.parent
+                if newNodeGParent.right == newNodeParent:
+                    newNodeUncle = newNodeGParent.left
+                    if newNodeUncle.red == True:
+                        newNodeUncle.red = False
+                        newNodeParent.red = False
+                        newNodeGParent.red = True
+                        new_node = newNodeGParent
+                    elif newNodeUncle.red == False:
+                        if newNodeParent.left == new_node:
+                            new_node = newNodeParent
+                            self.rotate_right(new_node)
+                        newNodeParent.red = False
+                        newNodeGParent.red = True
+                        self.rotate_left(newNodeGParent)
+                elif newNodeGParent.left == newNodeParent:
+                    newNodeUncle = newNodeGParent.left
+                    if newNodeUncle.red == True:
+                        newNodeUncle.red = False
+                        newNodeParent.red = False
+                        newNodeGParent.red = True
+                        new_node = newNodeGParent
+                    elif newNodeUncle.red == False:
+                        if newNodeParent.right == new_node:
+                            new_node = newNodeParent
+                            self.rotate_left(new_node)
+                        newNodeParent.red = False
+                        newNodeGParent.red = True
+                        self.rotate_right(newNodeGParent)
+            self.root.red = False
+                
+
     def exists(self, val):
         curr = self.root
         while curr != self.nil and val != curr.val:
