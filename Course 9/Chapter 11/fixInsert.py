@@ -47,8 +47,9 @@ class RBTree:
         fix_insert(self, new_node)
 
     def fix_insert(self, new_node):
-        pass
-
+        newNodeParent = new_node.parent
+        while new_node != self.root and new_node.parent.red == True
+            
     def exists(self, val):
         curr = self.root
         while curr != self.nil and val != curr.val:
