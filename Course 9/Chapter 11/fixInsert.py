@@ -44,7 +44,7 @@ class RBTree:
         else:
             parent.right = new_node
 
-        # ?
+        fix_insert(self, new_node)
 
     def fix_insert(self, new_node):
         pass
