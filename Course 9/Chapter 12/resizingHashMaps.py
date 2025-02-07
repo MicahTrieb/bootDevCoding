@@ -12,9 +12,10 @@ class HashMap:
         loadPercentage = self.current_load()
         if loadPercentage < 0.05:
             return
-        newHash = HashMap(len(self.hashmap) - 1 * 10)
-        for currentValue in range(0,len(self.hashmap)):
-            newHash.insert(self.hashmap[currentValue][0], self.hashmap[currentValue][1])
+        newHash = HashMap(len(self.hashmap) * 10)
+        for currentValue in self.hashmap:
+            if currentValue is not None:
+                newHash.insert(currentValue[0], currentValue[1])
         
         self.hashmap = newHash.hashmap
 
