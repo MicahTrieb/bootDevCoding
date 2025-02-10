@@ -11,7 +11,7 @@ class HashMap:
             indexValue += 1
             if indexValue % len(self.hashmap) == 0:
                 indexValue = 0
-            firstIteration == False
+            firstIteration = False
         self.hashmap[indexValue] = (key, value)
     def get(self, key):
         indexValue = self.key_to_index(key)
@@ -28,6 +28,25 @@ class HashMap:
             firstIteration = False
         raise Exception("sorry, key not found")
                 
+
+    # don't touch below this line
+
+    def __init__(self, size):
+        self.hashmap = [None for i in range(size)]
+
+    def key_to_index(self, key):
+        sum = 0
+        for c in key:
+            sum += ord(c)
+        return sum % len(self.hashmap)
+
+    def __repr__(self):
+        final = ""
+        for i, v in enumerate(self.hashmap):
+            if v != None:
+                final += f" - {str(v)}\n"
+        return final
+
 
     # don't touch below this line
 
