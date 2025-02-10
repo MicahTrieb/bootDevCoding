@@ -4,11 +4,12 @@ class Trie:
     def add(self, word):
         currentValue = self.root
         for currentLetter in word:
-            if currentLetter not in currentValue.keys:
+            if currentLetter not in currentValue.keys():
                 currentValue[currentLetter] = {}
                 currentValue = currentValue[currentLetter]
             else:
-                pass
+                currentValue = currentValue[currentLetter]
+        currentValue[self.end_symbol] = True
 
     # don't touch below this line
 
