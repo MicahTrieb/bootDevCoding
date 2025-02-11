@@ -3,6 +3,22 @@
 class Trie:
     def find_matches(self, document):
         newSet = set()
+        stringIndices = []
+        for currentIndex in document:
+            tempLevel = self.root
+            currentNumber = 0
+            for currentNestedIndex in currentIndex:
+                currentNumber += 1
+                stringIndices.append(currentNumber)
+                if currentNestedIndex not in tempLevel:
+                    stringIndices = []
+                    break
+                tempLevel = tempLevel[currentNestedIndex]
+                if "*" in tempLevel:
+                    valueA, valueB = stringIndices[0], stringIndices[-1]
+                    newSet.add(currentIndex[valueA:valueB])
+        return newSet
+                
         
 
     # don't touch below this line
