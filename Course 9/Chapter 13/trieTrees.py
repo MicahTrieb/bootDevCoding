@@ -18,11 +18,7 @@ class Trie:
         self.root = {}
         self.end_symbol = "*"
 
-
-
-
-
-
+#-------------------------------------------
 
 class Trie:
     def add(self, word):

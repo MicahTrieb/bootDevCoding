@@ -1,5 +1,20 @@
 #Lesson Link: https://www.boot.dev/lessons/aa5dc9d4-5286-4adf-a8c5-03e738a781a6
 
+
+#Redid this for practice
+class Trie:
+    def exists(self, word):
+        tempValue = self.root
+        for currentLetter in word:
+            if currentLetter in tempValue:
+                tempValue = tempValue[currentLetter]
+            else:
+                return False
+        if "*" in tempValue:
+            return True
+        return False
+
+#-------------------------------------------
 class Trie:
     def exists(self, word):
         currentDict = self.root
