@@ -2,8 +2,18 @@
 
 class Trie:
     def longest_common_prefix(self):
-        pass
-
+        current = self.root
+        prefix = ""
+        while True:
+            keys = current.keys()
+            childrenAmount = len(current.keys())
+            if "*" in current:
+                break
+            if childrenAmount == 1:
+                prefix += current[keys[0]]
+                current = current[keys[0]]
+            else:
+                break
     # don't touch below this line
 
     def __init__(self):
