@@ -4,19 +4,24 @@ class Trie:
     def find_matches(self, document):
         newSet = set()
         stringIndices = []
+        currentNumber = 0
+        tempLevel = self.root
         for currentIndex in document:
-            tempLevel = self.root
-            currentNumber = 0
             for currentNestedIndex in currentIndex:
-                currentNumber += 1
                 stringIndices.append(currentNumber)
+                currentNumber += 1
+                #print(f"{currentNestedIndex in tempLevel} of {currentNestedIndex} in {tempLevel}")
                 if currentNestedIndex not in tempLevel:
+                    #print(f"Broken at {currentNestedIndex} with current string indices of {stringIndices}")
                     stringIndices = []
+                    tempLevel = self.root
                     break
                 tempLevel = tempLevel[currentNestedIndex]
                 if "*" in tempLevel:
-                    valueA, valueB = stringIndices[0], stringIndices[-1]
-                    newSet.add(currentIndex[valueA:valueB])
+                    valueA, valueB = stringIndices[0], (stringIndices[-1] + 1)
+                    #print(f"Successful with {document[valueA:valueB]}")
+                    newSet.add(document[valueA:valueB])
+                    tempLevel = self.root
         return newSet
                 
         
