@@ -6,14 +6,16 @@ class Trie:
         prefix = ""
         while True:
             keys = current.keys()
-            childrenAmount = len(current.keys())
+            childrenAmount = len(list(current.keys()))
+            currentList = list(current.keys())
             if "*" in current:
                 break
             if childrenAmount == 1:
-                prefix += current[keys[0]]
-                current = current[keys[0]]
+                prefix += currentList[0]
+                current = current[currentList[0]]
             else:
                 break
+        return prefix
     # don't touch below this line
 
     def __init__(self):
