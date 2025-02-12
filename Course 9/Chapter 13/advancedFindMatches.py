@@ -15,7 +15,8 @@ class Trie:
             for currentLetter in currentMatch:
                 if currentLetter in variations.values():
                     found = True
-                    currentWord += variations[currentLetter]
+                    key = [k for k, v in variations.items() if v == currentLetter]
+                    currentWord += key[0]
                 else:
                     currentWord += currentLetter
             if found == True:
@@ -47,6 +48,7 @@ class Trie:
     def __init__(self):
         self.root = {}
         self.end_symbol = "*"
+
 
 
 
