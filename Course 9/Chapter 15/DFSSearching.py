@@ -1,19 +1,19 @@
-#Lesson Link: https://www.boot.dev/lessons/a607653a-92c2-4898-b19f-e5469384a1c6
+#Lesson Link: https://www.boot.dev/lessons/0deb238d-8b3c-48b0-a367-caf08d65eed4
 
 class Graph:
-    def breadth_first_search(self, v):
+    def depth_first_search(self, start_vertex):
         visited = []
-        to_visit = []
-        to_visit.append(v)
-        while to_visit:
-            neighbourList = sorted(self.graph[to_visit[0]])
-            visited.append(to_visit.pop(0))
-            for currentNeighbour in neighbourList:
-                if currentNeighbour not in visited and currentNeighbour not in to_visit:
-                    to_visit.append(currentNeighbour)
-                    pass
+        self.depth_first_search_r(visited, start_vertex)
         return visited
-    # don't touch below this line
+
+    def depth_first_search_r(self, visited, current_vertex):
+        visited.append(current_vertex)
+        neighbourList = sorted(list(self.graph[current_vertex]))
+        for currentNeighbour in neighbourList:
+            if currentNeighbour not in visited:
+                self.depth_first_search_r(visited, currentNeighbour)
+
+        # don't touch below this line
 
     def __init__(self):
         self.graph = {}

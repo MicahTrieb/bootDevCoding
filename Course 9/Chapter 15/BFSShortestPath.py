@@ -1,18 +1,18 @@
-#Lesson Link: https://www.boot.dev/lessons/a607653a-92c2-4898-b19f-e5469384a1c6
+#Lesson Link:https://www.boot.dev/lessons/c0803659-7811-44fd-a532-3baf926fe435
 
+
+
+#Meant to find the shortest path between start and end node in a graph
 class Graph:
-    def breadth_first_search(self, v):
+    def bfs_path(self, start, end):
         visited = []
-        to_visit = []
-        to_visit.append(v)
-        while to_visit:
-            neighbourList = sorted(self.graph[to_visit[0]])
-            visited.append(to_visit.pop(0))
-            for currentNeighbour in neighbourList:
-                if currentNeighbour not in visited and currentNeighbour not in to_visit:
-                    to_visit.append(currentNeighbour)
-                    pass
-        return visited
+        tempValue = start
+        currentShortestPath = float("inf")
+        currentValue = 0
+        #while currentShortestPath < currentValue and len(visited) + 1 != len(self.graph) * len(self.graph):
+
+
+
     # don't touch below this line
 
     def __init__(self):
