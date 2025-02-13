@@ -5,11 +5,23 @@
 #Meant to find the shortest path between start and end node in a graph
 class Graph:
     def bfs_path(self, start, end):
+        totalRouteTime = {}
+        found = False
+        toVisit = [start]
         visited = []
-        tempValue = start
-        currentShortestPath = float("inf")
-        currentValue = 0
-        #while currentShortestPath < currentValue and len(visited) + 1 != len(self.graph) * len(self.graph):
+        rootNeighbours = sorted(list(self.graph[start]))
+        for currentRootNeighbour in rootNeighbours:
+            totalRouteTime[currentRootNeighbour] = set()
+        
+        while toVisit and found == False:
+            currentVisitingNeighbours = sorted(list(self.graph[toVisit[0]]))
+            if end in currentVisitingNeighbours:
+                found = True
+                continue
+            visited.append(toVisit.pop(0))
+            
+        
+
 
 
 
