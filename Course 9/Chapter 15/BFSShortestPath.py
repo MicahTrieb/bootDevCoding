@@ -1,5 +1,51 @@
 #Lesson Link:https://www.boot.dev/lessons/c0803659-7811-44fd-a532-3baf926fe435
 
+
+#----------------------------------------------------------------
+    def bfs_path(self, start, end):
+        if self.does_end_exist(start, end):
+            toVisit = [start]
+            visitedDict = {}
+            visited = []
+            returnVisited = []
+            currentIndex = 0
+            while toVisit:                
+                endNeighbor = sorted(list(self.graph[toVisit[0]]))
+                visited.append(toVisit.pop(0))
+                if end in endNeighbor:
+                    visited.append(end)
+                    break
+                for currentNeighbor in endNeighbor:
+                    if currentNeighbor not in visited and currentNeighbor not in toVisit:
+                        toVisit.append(currentNeighbor)
+            while visited:
+                currentLastIndex = visited.pop(-1)
+                if len(self.graph[currentLastIndex]) == 1:
+                    returnVisited.append(currentLastIndex)
+                elif len(self.graph[currentLastIndex]) > 1:
+                    for currentNeighbor in self.graph[currentLastIndex]:
+                        if currentNeighbor not in visited:
+                            continue
+                        for i in self.graph[currentNeighbor]:
+                            
+                        
+                    
+        else:
+            return None
+
+
+
+
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------------
+
+#Redo part three:
 class Graph:
     def bfs_path(self, start, end):
         if self.graph:
@@ -22,8 +68,15 @@ class Graph:
                         if not toVisit:
                             pathTraversed[currentNeighbour] == None
                             break
-
                 for currentTraversal in pathTraversed:
+                    if pathTraversed[currentTraversal]:
+                        while len(currentTraversal) >= 3:
+
+                    else:
+                        continue
+
+                            
+                '''for currentTraversal in pathTraversed:
                     if pathTraversed[currentTraversal]:
                         endNode = pathTraversed[currentTraversal].pop(-1)
                         newList = [endNode]
@@ -34,7 +87,7 @@ class Graph:
                                 checkList = sorted(list(self.graph[tempNode]))
                                 if tempNode in visited:
                                     for currentNode in checkList:
-                                        if currentNode in visited:
+                                        if currentNode in visited:'''
 
 
 
