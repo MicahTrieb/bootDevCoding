@@ -8,17 +8,43 @@ class Graph:
 
                 for currentNeighbour in rootNeighbours:
                     toVisit = [currentNeighbour]
-                    pathTraversed[currentNeighbour] = set(start)
+                    pathTraversed[currentNeighbour] = [start]
                     while toVisit:
-                        pathTraversed[currentNeighbour].add(toVisit[0])
+                        pathTraversed[currentNeighbour].append(toVisit[0])
                         sortedNeighbors = sorted(list(self.graph[toVisit[0]]))
                         visited.append(toVisit.pop(0))
                         if end in sortedNeighbors:
-                            pathTraversed[currentNeighbour.add(end)]
+                            pathTraversed[currentNeighbour].append(end)
                             break
                         for currentVisitTarget in sortedNeighbors:
                             if currentVisitTarget not in visited and currentVisitTarget not in toVisit:
                                 visited.append(currentVisitTarget)
+                        if not toVisit:
+                            pathTraversed[currentNeighbour] == None
+                            break
+
+                for currentTraversal in pathTraversed:
+                    if pathTraversed[currentTraversal]:
+                        endNode = pathTraversed[currentTraversal].pop(-1)
+                        newList = [endNode]
+                        tempNode = endNode
+                        for currentNeighbor in sorted(list(self.graph[endNode])):
+                            tempNode = currentNeighbor
+                            while tempNode != start:
+                                checkList = sorted(list(self.graph[tempNode]))
+                                if tempNode in visited:
+                                    
+
+
+
+
+
+                        
+
+
+
+                    
+                                
 
             return None
         return None
