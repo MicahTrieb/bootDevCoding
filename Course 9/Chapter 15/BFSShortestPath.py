@@ -33,7 +33,8 @@ class Graph:
                             while tempNode != start:
                                 checkList = sorted(list(self.graph[tempNode]))
                                 if tempNode in visited:
-                                    
+                                    for currentNode in checkList:
+                                        if currentNode in visited:
 
 
 
