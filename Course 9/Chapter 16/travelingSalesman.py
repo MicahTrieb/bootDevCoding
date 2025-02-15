@@ -1,5 +1,10 @@
 #Lesson Link: https://www.boot.dev/lessons/64877fbc-b634-4b11-8b8e-1ba6460adcf6
 
+
+
+
+#------------------------------------------
+#I am so confused, rewriting....
 def tsp(cities, paths, dist):
     permutationList = permutations(paths)
     for currentPermutation in permutationList:
