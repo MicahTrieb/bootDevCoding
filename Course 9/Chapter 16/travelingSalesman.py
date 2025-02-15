@@ -1,8 +1,14 @@
 #Lesson Link: https://www.boot.dev/lessons/64877fbc-b634-4b11-8b8e-1ba6460adcf6
 
 def tsp(cities, paths, dist):
-    pass
-
+    permutationList = permutations(paths)
+    for currentPermutation in permutationList:
+        currentSum = 0 
+        for currentIndex in range(0, len(currentPermutation):
+            currentSum += currentPermutation
+        if currentSum < dist:
+            return True
+    return False
 
 # don't touch below this line
 
