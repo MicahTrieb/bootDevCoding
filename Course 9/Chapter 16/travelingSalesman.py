@@ -3,15 +3,15 @@
 def tsp(cities, paths, dist):
     permutationList = permutations(paths)
     totalSum = 0
-    for i in range(0, len(permutationList[0])):
-        currentMinimum = float("inf")
-        for currentPermutation in permutationList:
-            print(currentPermutation)
-            currentMinimum = min(currentMinimum, currentPermutation[i])
-        totalSum += currentMinimum
-    print (totalSum + dist)
-    if totalSum < dist:
-        return True
+    for j in range(0, len(permutationList)):
+        for i in range(0, len(permutationList[0])):
+            currentMinimum = float("inf")
+            for currentPermutation in permutationList:
+                currentMinimum = min(currentMinimum, currentPermutation[j][i])
+            if currentMinimum != 0:
+                totalSum += currentMinimum
+        if totalSum < dist:
+            return True
     return False
             
             
@@ -41,7 +41,6 @@ def helper(res, arr, n):
             else:
                 arr[0], arr[n - 1] = arr[n - 1], arr[0]
     return res
-
 
 
 #------------------------------------------
