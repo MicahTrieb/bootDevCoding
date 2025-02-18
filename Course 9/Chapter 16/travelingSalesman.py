@@ -2,9 +2,14 @@
 
 
 def tsp(cities, paths, dist):
-    permutationList = permutations(paths)
-    totalSum = 0
-    for currentPermutation in permutationList:
+    perms = permutations(cities)
+    for currentPerm in perms:
+        total_dist = 0
+        for i in range(1, len(currentPerm)):
+            total_dist += paths[currentPerm[i - 1]][currentPerm[i]]
+        if total_dist < dist:
+            return True
+    return False
         
 
 # don't touch below this line
